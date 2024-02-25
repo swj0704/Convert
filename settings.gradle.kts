@@ -15,6 +15,6 @@ dependencyResolutionManagement {
 
 rootProject.name = "Convert"
 include(":app")
-include(":darta")
+include(":data")
 include(":domain")
 include(":presentation")
