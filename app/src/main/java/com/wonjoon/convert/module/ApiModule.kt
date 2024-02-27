@@ -1,5 +1,6 @@
 package com.wonjoon.convert.module
 
+import com.wonjoon.data.retrofit.ConvertAPI
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
@@ -18,5 +19,11 @@ object ApiModule {
             .addConverterFactory(GsonConverterFactory.create())
             .baseUrl("https://api.apilayer.com/fixer/")
             .build()
+    }
+
+    @Provides
+    @Singleton
+    fun provideConvertAPI(retrofit: Retrofit) : ConvertAPI{
+        return retrofit.create(ConvertAPI::class.java)
     }
 }
