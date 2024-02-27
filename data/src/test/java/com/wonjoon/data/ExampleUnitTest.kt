@@ -1,4 +1,4 @@
-package com.wonjoon.darta
+package com.wonjoon.data
 
 import org.junit.Test
 
