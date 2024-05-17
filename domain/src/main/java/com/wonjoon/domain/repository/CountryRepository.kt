@@ -1,7 +1,7 @@
 package com.wonjoon.domain.repository
 
-import com.wonjoon.domain.model.CountryModel
+import com.wonjoon.domain.model.enums.Country
 
 interface CountryRepository {
-    fun getCountries() : List<CountryModel>
+    fun getCountries() : List<Country>
 }

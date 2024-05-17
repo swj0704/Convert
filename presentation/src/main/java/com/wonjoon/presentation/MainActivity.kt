@@ -39,9 +39,8 @@ fun MainView(viewModel: MainViewModel = hiltViewModel()) {
     val amount : Double by viewModel.amount.observeAsState(0.0)
     val date : String by viewModel.date.observeAsState("")
 
-
     Column(modifier = Modifier.fillMaxSize()) {
         HeaderView()
-        RowLabelTextView("내 환율", "1300원")
+        RowLabelTextView("내 적용 환율", "1300원")
     }
 }
