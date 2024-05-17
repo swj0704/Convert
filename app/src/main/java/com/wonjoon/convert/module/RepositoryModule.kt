@@ -1,8 +1,10 @@
 package com.wonjoon.convert.module
 
 import com.wonjoon.data.repository.ConvertRepositoryImpl
+import com.wonjoon.data.repository.CountryRepositoryImpl
 import com.wonjoon.data.retrofit.ConvertAPI
 import com.wonjoon.domain.repository.ConvertRepository
+import com.wonjoon.domain.repository.CountryRepository
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
@@ -16,5 +18,11 @@ object RepositoryModule {
     @Singleton
     fun provideConvertRepository(api : ConvertAPI) : ConvertRepository{
         return ConvertRepositoryImpl(api)
+    }
+
+    @Provides
+    @Singleton
+    fun provideCountryRepository() : CountryRepository{
+        return CountryRepositoryImpl()
     }
 }
