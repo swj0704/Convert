@@ -17,7 +17,7 @@ class ConvertRepositoryImpl(val api : ConvertAPI) : ConvertRepository {
         amount: Long
     ): Flow<ApiState<ConvertDataModel>>  = flow{
         try{
-            val response = api.convert(sendCountry, receiveCountry, amount)
+            val response = api.convert(sendCountry = sendCountry, receiveCountry = receiveCountry, amount = amount)
             if(response.isSuccessful){
                 response.body()?.let {
                     emit(

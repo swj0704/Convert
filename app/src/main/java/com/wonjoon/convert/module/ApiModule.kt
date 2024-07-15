@@ -17,7 +17,7 @@ object ApiModule {
     fun provideRetrofit() : Retrofit{
         return Retrofit.Builder()
             .addConverterFactory(GsonConverterFactory.create())
-            .baseUrl("https://api.apilayer.com/fixer/")
+            .baseUrl("https://api.apilayer.com/exchangerates_data/")
             .build()
     }
 
