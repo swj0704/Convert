@@ -2,6 +2,7 @@ package com.wonjoon.presentation.label
 
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
+import androidx.compose.foundation.clickable
 import androidx.compose.foundation.focusable
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
@@ -34,7 +35,7 @@ import com.wonjoon.presentation.ui.theme.ConvertTheme
 
 @OptIn(ExperimentalCoilApi::class)
 @Composable
-fun AmountLabelTextView(visibleLeftIcon : Boolean, value : String, country: Country, onValueChange: (String) -> Unit){
+fun AmountLabelTextView(visibleLeftIcon : Boolean, value : String, country: Country, onValueChange: (String) -> Unit, onClickCountry: () -> Unit){
     Row(modifier = Modifier
         .fillMaxWidth()
         .padding(top = 10.dp, start = 30.dp, end = 30.dp)
@@ -86,6 +87,9 @@ fun AmountLabelTextView(visibleLeftIcon : Boolean, value : String, country: Coun
                 modifier = Modifier
                     .width(30.dp)
                     .height(30.dp)
+                    .clickable {
+                        onClickCountry()
+                    }
             )
         }
     }
