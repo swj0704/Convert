@@ -35,6 +35,14 @@ class MainViewModel @Inject constructor(
     private val _receive = MutableLiveData<Country>(Country.US)
     val receive : LiveData<Country> by ::_receive
 
+    fun changeCountry(isPickerModeSendCountry: Boolean, country: Country){
+        if(isPickerModeSendCountry){
+            _send.value = country
+        } else {
+            _receive.value = country
+        }
+    }
+
     fun convert(send : String, receive : String, amount : String, isInit: Boolean){
         viewModelScope.launch {
             convertUseCase(send, receive, amount.toLong()).collect{

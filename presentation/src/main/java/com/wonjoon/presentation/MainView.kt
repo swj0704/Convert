@@ -39,6 +39,10 @@ fun MainView(viewModel: MainViewModel = hiltViewModel()) {
         mutableStateOf(false)
     }
 
+    var isPickerModeSendCountry by remember{
+        mutableStateOf(false)
+    }
+
     LaunchedEffect(send, receive) {
         viewModel.convert(send.currency.name, receive.currency.name, receive.currency.base.toString(), true)
     }
@@ -53,14 +57,19 @@ fun MainView(viewModel: MainViewModel = hiltViewModel()) {
             viewModel.convert(receive.currency.name, send.currency.name, number.toString(), false)
         }) {
             isCountryPickerSheetOpen = true
+            isPickerModeSendCountry = true
         }
         Spacer(modifier = Modifier.padding(16.dp))
         AmountLabelTextView(visibleLeftIcon = true, value = formatNumber(amount), country = receive, {}) {
             isCountryPickerSheetOpen = true
+            isPickerModeSendCountry = false
         }
 
         if(isCountryPickerSheetOpen) {
-            CountryPickerSheet(modifier = Modifier.fillMaxWidth().height(100.dp)) {
+            CountryPickerSheet(modifier = Modifier.fillMaxWidth().height(60.dp), {
+                viewModel.changeCountry(isPickerModeSendCountry, it)
+                isCountryPickerSheetOpen = false
+            }) {
                 isCountryPickerSheetOpen = false
             }
         }

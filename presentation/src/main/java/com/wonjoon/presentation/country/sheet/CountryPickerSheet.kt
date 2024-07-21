@@ -1,5 +1,6 @@
 package com.wonjoon.presentation.country.sheet
 
+import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
@@ -20,6 +21,7 @@ import com.wonjoon.presentation.country.item.CountryItem
 @Composable
 fun CountryPickerSheet(
     modifier: Modifier,
+    onSelectCountry: (Country) -> Unit,
     onClose: () -> Unit,
 ) {
     val sheetState = rememberModalBottomSheetState()
@@ -35,7 +37,9 @@ fun CountryPickerSheet(
 
         LazyColumn(modifier = Modifier.fillMaxWidth()) {
             items(Country.entries){
-                CountryItem(modifier = Modifier.fillMaxWidth(), country = it)
+                CountryItem(modifier = modifier.clickable {
+                    onSelectCountry(it)
+                }, country = it)
             }
         }
     }
